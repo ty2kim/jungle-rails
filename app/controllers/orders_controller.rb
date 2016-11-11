@@ -3,14 +3,15 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @line_items = @order.line_items
-  end
+    end
 
   def create
     charge = perform_stripe_charge
-    order  = create_order(charge)
+    order = create_order(charge)
 
     if order.valid?
       empty_cart!
+      UserMailer.order_receipt_email(order).deliver_now
       redirect_to order, notice: 'Your Order has been placed.'
     else
       redirect_to cart_path, error: order.errors.full_messages.first
@@ -43,15 +44,14 @@ class OrdersController < ApplicationController
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
     cart.each do |product_id, details|
-      if product = Product.find_by(id: product_id)
-        quantity = details['quantity'].to_i
-        order.line_items.new(
-          product: product,
-          quantity: quantity,
-          item_price: product.price,
-          total_price: product.price * quantity
-        )
-      end
+      next unless product = Product.find_by(id: product_id)
+      quantity = details['quantity'].to_i
+      order.line_items.new(
+        product: product,
+        quantity: quantity,
+        item_price: product.price,
+        total_price: product.price * quantity
+      )
     end
     order.save!
     order
@@ -67,5 +67,4 @@ class OrdersController < ApplicationController
     end
     total
   end
-
 end
