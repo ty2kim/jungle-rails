@@ -1,11 +1,30 @@
-<h1>Signup</h1>
-<%= form_for :user, url: '/users' do |f| %>
 
-  First Name: <%= f.text_field :first_name %>
-  Last Name: <%= f.text_field :last_name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
 
-<% end %>
+
+<h1><span class="fa fa-sign-in"></span> Signup</h1>
+<div class="jumbotron col-md-6">
+  <%= form_for :user, url: '/users' do |f| %>
+    <div class="form-group">
+      <label>First Name: </label>
+      <%= f.text_field :first_name, :class => "form-control"%>
+    </div>
+    <div class="form-group">
+      <label>Last Name: </label>
+      <%= f.text_field :last_name, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Email: </label>
+      <%= f.text_field :email, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Password: </label>
+      <%= f.password_field :password, :class => "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Password Confirmation: </label>
+      <%= f.password_field :password_confirmation, :class => "form-control" %>
+    </div>
+    <%= f.submit "Submit", :class => "btn btn-warning btn-lg" %>
+
+  <% end %>
+</div>
