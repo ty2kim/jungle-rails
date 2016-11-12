@@ -9,7 +9,7 @@ class UserMailer < ApplicationMailer
 
   def order_receipt_email(order)
     @order = order
-    mail(to: 'ty2kim@gmail.com', subject: "Jungle Order Receipt for #{@order.id}")
+    mail(to: @order.email, subject: "Jungle Order Receipt for #{@order.id}")
     # if you fix the order info
     # mail(to: @order.email, subject: "Jungle Order Receipt for #{@order.id}")
   end
