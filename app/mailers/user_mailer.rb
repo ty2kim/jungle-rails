@@ -9,6 +9,7 @@ class UserMailer < ApplicationMailer
 
   def order_receipt_email(order)
     @order = order
+    @line_items = @order.line_items
     mail(to: @order.email, subject: "Jungle Order Receipt for #{@order.id}")
     # if you fix the order info
     # mail(to: @order.email, subject: "Jungle Order Receipt for #{@order.id}")

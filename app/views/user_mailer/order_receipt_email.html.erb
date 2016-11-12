@@ -5,11 +5,30 @@
   </head>
   <body>
     <h1> Thank you for your order </h1>
-    <h2> Your Order: </h2>
-    <% @order_total = 0 %>
-    <% @order.line_items.each do |line_item| %>
-      <%= render 'item' %>
-    <% end %>
+    <h2> Your Order id: <%= @order.id %></h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit Price</th>
+          <th>Quantity</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render collection: @line_items, partial: "user_mailer/line_item" %>
+      </tbody>
+      <tfoot>
+        <tr>
+          <th>
+            TOTAL:
+          </th>
+          <th>
+            <%= @order.total_cents/100.00 %>
+          </th>
+        </tr>
+      </tfoot>
+    </table>
     <p>Have a great day!</p>
   </body>
 </html>
