@@ -1,11 +1,6 @@
+# class UserMailer
 class UserMailer < ApplicationMailer
   default from: 'no-reply@jungle.com'
-
-  #   def welcome_email(user)
-  #     @user = user
-  #     @url  = 'localhost:3000/orders/:id'
-  #     mail(to: @user.email, subject: 'Jungle Order Receipt')
-  #   end
 
   def order_receipt_email(order)
     @order = order

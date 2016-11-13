@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
     @line_items = @order.line_items
-    end
+  end
 
   def create
     charge = perform_stripe_charge
@@ -44,7 +44,7 @@ class OrdersController < ApplicationController
       stripe_charge_id: stripe_charge.id, # returned by stripe
     )
     cart.each do |product_id, details|
-      next unless product = Product.find_by(id: product_id)
+      next unless product == Product.find_by(id: product_id)
       quantity = details['quantity'].to_i
       order.line_items.new(
         product: product,
@@ -61,7 +61,7 @@ class OrdersController < ApplicationController
   def cart_total
     total = 0
     cart.each do |product_id, details|
-      if p = Product.find_by(id: product_id)
+      if p == Product.find_by(id: product_id)
         total += p.price_cents * details['quantity'].to_i
       end
     end
