@@ -32,7 +32,7 @@ puts "Re-creating Products ..."
 
 Product.destroy_all
 
-cat1.products.create!({
+product1_1 = cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
@@ -40,7 +40,7 @@ cat1.products.create!({
   price: 64.99
 })
 
-cat1.products.create!({
+product1_2 = cat1.products.create!({
   name:  'Women\'s Zebra pants',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel2.jpg'),
@@ -48,7 +48,7 @@ cat1.products.create!({
   price: 124.99
 })
 
-cat1.products.create!({
+product1_3 = cat1.products.create!({
   name:  'Hipster Hat',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel3.jpg'),
@@ -56,7 +56,7 @@ cat1.products.create!({
   price: 34.49
 })
 
-cat1.products.create!({
+product1_4 = cat1.products.create!({
   name:  'Hipster Socks',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel4.jpg'),
@@ -64,7 +64,7 @@ cat1.products.create!({
   price: 25.00
 })
 
-cat1.products.create!({
+product1_5 = cat1.products.create!({
   name:  'Russian Spy Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel5.jpg'),
@@ -72,7 +72,7 @@ cat1.products.create!({
   price: 1_225.00
 })
 
-cat1.products.create!({
+product1_6 = cat1.products.create!({
   name:  'Human Feet Shoes',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel6.jpg'),
@@ -81,7 +81,7 @@ cat1.products.create!({
 })
 
 
-cat2.products.create!({
+product2_1 = cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics1.jpg'),
@@ -89,7 +89,7 @@ cat2.products.create!({
   price: 164.49
 })
 
-cat2.products.create!({
+product2_2 = cat2.products.create!({
   name:  'Hotdog Slicer',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics2.jpg'),
@@ -97,7 +97,7 @@ cat2.products.create!({
   price: 26.00
 })
 
-cat2.products.create!({
+product2_3 = cat2.products.create!({
   name:  'World\'s Largest Smartwatch',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics3.jpg'),
@@ -105,7 +105,7 @@ cat2.products.create!({
   price: 2_026.29
 })
 
-cat3.products.create!({
+product3_1 = cat3.products.create!({
   name:  'Optimal Sleeping Bed',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture1.jpg'),
@@ -113,7 +113,7 @@ cat3.products.create!({
   price: 3_052.00
 })
 
-cat3.products.create!({
+product3_2 = cat3.products.create!({
   name:  'Electric Chair',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture2.jpg'),
@@ -121,7 +121,7 @@ cat3.products.create!({
   price: 987.65
 })
 
-cat3.products.create!({
+product3_3 = cat3.products.create!({
   name:  'Red Bookshelf',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture3.jpg'),
@@ -129,5 +129,18 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+puts "Re-creating Users ..."
+
+User.destroy_all
+
+user1 = User.create!(first_name: 'Amy', last_name: 'A', email: 'amy@example.com', password_digest: '$2a$10$zm8mVFNc50ree4/SRs8c2eC3LWdUrgi6JzzGFVal/5S6sNbGK7jEi')
+user2 = User.create!(first_name: 'Bob', last_name: 'B', email: 'bob@example.com', password_digest: '$2a$10$D3UBFI6uBehowmpuijVYS.3PGR/3nCIKChpVWGYUYXnN.HnwVpg/W')
+
+puts "Re-creating Reviews ..."
+
+Review.destroy_all
+
+user1.reviews.create!(product_id: 1, description: 'Awesome!!!!!', rating: 5)
+user2.reviews.create!(product_id: 2, description: 'Bad!!!!!!!!!', rating: 1)
 
 puts "DONE!"
