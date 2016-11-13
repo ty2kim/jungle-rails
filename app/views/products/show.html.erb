@@ -25,7 +25,26 @@
         </dl>
       </div>
     </div>
-
+    <% if @reviews.any? %>
+      <h2>Reviews</h2>
+      <div class="row">
+        <div class="panel panel-default items">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Reviewer</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%= render collection: @reviews, partial: 'products/review'%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    <% end %>
   </article>
 
 </section>
