@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   root to: 'products#index'
 
-  resources :products, only: [:index, :show]
   resources :categories, only: [:show]
+
+  resources :products, only: [:index, :show] do
+    resources :reviews, only: [:create]
+  end
 
   resource :cart, only: [:show] do
     put    :add_item
@@ -18,11 +21,13 @@ Rails.application.routes.draw do
   end
 
   get '/login' => 'sessions#new'
+  # login GET    /login(.:format)                sessions#new
   post '/login' => 'sessions#create'
   get '/logout' => 'sessions#destroy'
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  # resources :sessions, only: [:create]
   # resources :sessions, path: 'login', only: [:new], path_names: { new: '' }
   # resources :sessions, path: 'login', only: [:create], path_names: { create: '' }
   # resources :sessions, path: 'logout', only: [:destroy], path_names: { destroy: '' }
