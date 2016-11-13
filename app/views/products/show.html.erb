@@ -46,18 +46,20 @@
       </div>
     <% end %>
     <br>
-    <div class="row">
-      <%= form_for @review, url: product_reviews_path(@product) do |f| %>
-        <div class="form-group">
-          <label>Write a review</label>
-          <%= f.text_area :description, size: "1x4", :class => "form-control" %>
-        </div>
-        <div class="form-group">
-          <label>Select rating</label>
-          <%= f.select :rating, [1,2,3,4,5] %>
-        </div>
-        <%= f.submit "Submit", :class => "btn btn-primary btn-lg" %>
-      <% end %>
-    </div>
+    <% unless current_user.nil? %>
+      <div class="row">
+        <%= form_for @review, url: product_reviews_path(@product) do |f| %>
+          <div class="form-group">
+            <label>Write a review</label>
+            <%= f.text_area :description, size: "1x4", :class => "form-control" %>
+          </div>
+          <div class="form-group">
+            <label>Select rating</label>
+            <%= f.select :rating, [1,2,3,4,5] %>
+          </div>
+          <%= f.submit "Submit", :class => "btn btn-primary btn-lg" %>
+        <% end %>
+      </div>
+    <% end %>
   </article>
 </section>
