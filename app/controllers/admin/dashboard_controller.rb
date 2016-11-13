@@ -1,6 +1,7 @@
-# class Admin::DashboardController
-class Admin::DashboardController < AdminController
-  # http_basic_authenticate_with name: ENV['AUTH_USERNAME'], password: ENV['AUTH_PASSWORD']
-  def show
+module Admin
+  # class Admin::DashboardController
+  class DashboardController < AdminController
+    def show
+    end
   end
 end
