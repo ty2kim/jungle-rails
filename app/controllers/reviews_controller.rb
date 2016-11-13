@@ -9,10 +9,17 @@ class ReviewsController < ApplicationController
     @review.user = current_user
 
     if @review.save
-      redirect_to :products, notice: 'Review created!'
+      redirect_to @product, notice: 'Review created!'
     else
       render @product
     end
+  end
+
+  def destroy
+    @product = Product.find params[:product_id]
+    @review = Review.find params[:review_id]
+    @review.destroy
+    redirect_to @product, notice: 'Review destroyed!'
   end
 
   private
