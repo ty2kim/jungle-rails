@@ -47,7 +47,7 @@
     <% end %>
     <br>
     <div class="row">
-      <%= form_for :review do |f| %>
+      <%= form_for :review, url: '/products/:product_id/reviews' do |f| %>
         <div class="form-group">
           <label>Write a review</label>
           <%= f.text_area :description, size: "1x4", :class => "form-control" %>
