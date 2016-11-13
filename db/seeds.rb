@@ -141,6 +141,8 @@ puts "Re-creating Reviews ..."
 Review.destroy_all
 
 user1.reviews.create!(product_id: 1, description: 'Awesome!!!!!', rating: 5)
+user1.reviews.create!(product_id: 2, description: 'OK', rating: 3)
+user2.reviews.create!(product_id: 1, description: 'Almost awesome', rating: 4)
 user2.reviews.create!(product_id: 2, description: 'Bad!!!!!!!!!', rating: 1)
 
 puts "DONE!"
