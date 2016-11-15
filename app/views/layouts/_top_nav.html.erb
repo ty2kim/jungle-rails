@@ -40,9 +40,11 @@
           </ul>
         </li>
         <li>
-          <%= link_to cart_path do %>
-            <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
-          <% end %>
+          <%# unless current_user.nil? %>
+            <%= link_to cart_path do %>
+              <%= fa_icon "shopping-cart" %> My Cart (<%= cart.size %>)
+            <% end %>
+          <%# end %>
         </li>
       </ul>
     </div>
