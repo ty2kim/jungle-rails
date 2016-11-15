@@ -11,6 +11,7 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+      # disable UserMailer for heroku
       # UserMailer.order_receipt_email(order).deliver_now
       redirect_to order, notice: 'Your Order has been placed.'
     else
