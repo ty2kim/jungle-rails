@@ -133,8 +133,8 @@ puts "Re-creating Users ..."
 
 User.destroy_all
 
-user1 = User.create!(first_name: 'Amy', last_name: 'A', email: 'amy@example.com', password_digest: '$2a$10$zm8mVFNc50ree4/SRs8c2eC3LWdUrgi6JzzGFVal/5S6sNbGK7jEi')
-user2 = User.create!(first_name: 'Bob', last_name: 'B', email: 'bob@example.com', password_digest: '$2a$10$D3UBFI6uBehowmpuijVYS.3PGR/3nCIKChpVWGYUYXnN.HnwVpg/W')
+user1 = User.create!(first_name: 'Amy', last_name: 'A', email: 'amy@example.com', password: '1', password_confirmation: '1')
+user2 = User.create!(first_name: 'Bob', last_name: 'B', email: 'bob@example.com', password: '1', password_confirmation: '1')
 
 puts "Re-creating Reviews ..."
 
