@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to '/'
     else
+      flash[:notice] = 'Incorrect email or password'
       redirect_to '/login'
     end
     # user = User.find_by_email(params[:email])
