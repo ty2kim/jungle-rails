@@ -1,6 +1,6 @@
 module Admin
   # class Admin::CategoriesController
-  class CategoriesController < AdminController
+  class CategoriesController < BaseController
     def index
       @categories = Category.order(name: :desc).all
     end

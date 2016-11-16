@@ -9,14 +9,18 @@
     <%= product.description %>
   </p>
   <footer class="actions">
-    <% if !current_user.nil? %>
-      <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', disabled: product.out_of_stock?, method: :put do %>
-        <%= fa_icon "shopping-cart", text: 'Add' %>
-      <% end %>
-    <% else %>
-      <%= link_to '/login', class: 'btn btn-primary', disabled: product.out_of_stock? do %>
-        <%= fa_icon "shopping-cart", text: 'Add' %>
-      <% end %>
+    <%# if !current_user.nil? %>
+      <%#= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', disabled: product.out_of_stock?, method: :put do %>
+        <%#= fa_icon "shopping-cart", text: 'Add' %>
+      <%# end %>
+    <%# else %>
+      <%#= link_to '/login', class: 'btn btn-primary', disabled: product.out_of_stock? do %>
+        <%#= fa_icon "shopping-cart", text: 'Add' %>
+      <%# end %>
+    <%# end %>
+
+    <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', disabled: product.out_of_stock?, method: :put do %>
+      <%= fa_icon "shopping-cart", text: 'Add' %>
     <% end %>
     <%= link_to product, class: 'btn btn-default pull-right' do %>
       Details &raquo;

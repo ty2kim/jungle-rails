@@ -1,6 +1,6 @@
 module Admin
   # class Admin:ProductsController
-  class ProductsController < AdminController
+  class ProductsController < BaseController
     def index
       @products = Product.order(id: :desc).all
     end
